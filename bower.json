@@ -1,0 +1,16 @@
+{
+  "name": "timeboxApp",
+  "version": "0.0.0",
+  "homepage": "https://github.com/busypeoples/timebox",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "app/bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angularjs-bower": "*"
+  }
+}
