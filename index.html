@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+		<title>Timebox Application</title>
+		<meta name="description" content="">
+		
+		<link rel="shortcut icon" href="/favicon.ico">
+	</head>
+	<body ng-app="timebox">
+		<div class="navigation">
+			<ul>
+				<li><a href="#users">Users</a></li>
+				<li><a href="#tasks">Tasks</a></li>
+			</ul>
+		</div>
+		<div ng-controller="MainController">
+			{{  welcome }}
+			<ng-view></ng-view>
+		</div>
+		<script src="components/angular/angular.min.js"></script>
+		<script src="components/angular-resource/angular-resource.min.js"></script>
+		<script src="components/angular-route/angular-route.min.js"></script>
+		<script src="src/main.js"></script>
+		<script src="src/userController.js"></script>
+		<script src="src/taskController.js"></script>
+	</body>
+</html>
