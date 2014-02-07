@@ -1,5 +1,24 @@
-
-<!-- simple placeholder for now... -->
-<div data-ng-repeat="user in users">
-    <div class="user"><span>{{ user.name }}</span><span> {{ user.email }}</span></div>
+<h2 class="sub-header">User Section</h2>
+<div class="table-responsive">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>E-Mail</th>
+                <th></th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- simple placeholder for now... -->
+            <tr data-ng-repeat="user in users">
+                <td></td>
+                <td>{{ user.name }}</td>
+                <td>{{ user.email }}</td>
+                <td></td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
 </div>
