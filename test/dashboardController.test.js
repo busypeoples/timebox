@@ -1,33 +1,46 @@
 'use strict';
 
 describe('DashboardController', function() {
-	var scope;
+	var scope, Tasks;
 
 	beforeEach(angular.mock.module('timebox'));
 
 	beforeEach(angular.mock.inject(function($rootScope, $controller) {
 
 		// simple mock for now...
-		var Tasks = {
-			getTasks : function() { return [{id : 100, 'title' : 'Finish module A'}] }
+		Tasks = {
+			getTasks : function() { return [{id : 100, 'title' : 'Finish module A', date : getDate() }] }
 		};
 
 		scope = $rootScope.$new();
 		$controller('DashboardController', { $scope : scope, Tasks : Tasks });
 	}));
 
+	function getDate() {
+		var date = new Date();
+		date.setHours(0);
+		date.setMinutes(0);
+		date.setSeconds(0);
+		return date;
+	}
+
 	describe('tasks for today', function() {
 		it('should display all scheduled tasks for today', function() {
-			var taskForToday = [{id : 100, 'title' : 'Finish module A'}];
-			expect(scope.tasksForToday).toEqual(taskForToday);
+			scope.$digest();
+			expect(scope.tasksForToday.length).toEqual(1);
 		});
 
-		it('', function() {
+		it('should filter all tasks that are not scheduled for today', function() {
+			var date = new Date();
+			date.setDate(date.getDate() + 10);
 
-		});
+			Tasks.getTasks = function() {
+				return [{id : 100, 'title' : 'Finish module A', date : date }];
+			};
 
-		it('', function() {
+			scope.$digest();
 
+			expect(scope.tasksForToday.length).toEqual(0);
 		});
 	});
 });
