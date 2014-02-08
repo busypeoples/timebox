@@ -1,0 +1,19 @@
+<div class="table-responsive">
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Title</th>
+            <th>Status</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <!-- simple placeholder for now... -->
+        <tr data-ng-repeat="task in tasksForToday">
+            <td>{{ task.title }}</td>
+            <td>{{ task.status }}</td>
+            <td></td>
+        </tr>
+        </tbody>
+    </table>
+</div>

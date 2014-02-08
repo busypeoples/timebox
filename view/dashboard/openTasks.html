@@ -1,0 +1,19 @@
+<div class="table-responsive">
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Title</th>
+            <th>Date</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <!-- simple placeholder for now... -->
+        <tr data-ng-repeat="task in openTasks">
+            <td>{{ task.title }}</td>
+            <td>{{ task.date | date:'dd.MM.yyyy'}}</td>
+            <td></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
