@@ -7,7 +7,10 @@
 
 		var tasks = [];
 
-		$scope.$watch(Tasks.getTasks(), function() { tasks = Tasks.getTasks(); init(); });
+		$scope.scheduleTaskForToday = scheduleTaskForToday;
+		$scope.isToday = isToday;
+
+		$scope.$watch(Tasks.getTasks(), function() {  tasks = Tasks.getTasks(); init(); });
 
 		/**
 		 *
@@ -36,12 +39,23 @@
 			return filteredTasks;
 		}
 
+		/**
+		 *
+		 * @param task
+		 */
 		function scheduleTaskForToday(task) {
 			if (isToday(task.date)) return;
 			task.date = new Date();
-			Task.saveTask(task);
+			Tasks.saveTask(task);
+			Tasks.getTasks();
+			init();
 		}
 
+		/**
+		 *
+		 * @param date
+		 * @returns {boolean}
+		 */
 		function isToday(date) {
 			if (date > getToday() && date < getTomorrow()) {
 				return true;

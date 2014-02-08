@@ -6,7 +6,7 @@
 	Module.service('Tasks', function() {
 		var _id = 0, tasks = [];
 		var Task = function(title, date) {
-			this.id = +_id;
+			this.id = ++_id;
 			this.title = title;
 			this.date = date || new Date();
 		};
@@ -39,7 +39,7 @@
 		 *
 		 * @param task
 		 */
-		this.updateTask = function(task) {
+		this.saveTask = function(task) {
 			for (var i =0; i < tasks.length; i++) {
 				if (task.id === tasks[i].id) {
 					tasks[i] = task;
