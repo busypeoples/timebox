@@ -6,16 +6,20 @@
 var Module = angular.module('timebox', ['ngResource', 'ngRoute']);
 Module.config(['$routeProvider', function($routeProvider){
 	$routeProvider
+		.when('/', {
+			templateUrl : '/timeboxApp/view/dashboard.html',
+			controller : 'DashboardController'
+		})
 		.when('/users', {
-			templateUrl : 'view/users.html',
+			templateUrl : '/timeboxApp/view/users.html',
 			controller : 'UserController'
 		})
 		.when('/tasks', {
-			templateUrl : 'view/tasks.html',
+			templateUrl : '/timeboxApp/view/tasks.html',
 			controller : 'TaskController'
 		})
 		.when('/settings', {
-			templateUrl : 'view/settings.html',
+			templateUrl : '/timeboxApp/view/settings.html',
 			controller : 'SettingsController'
 		});
 		
