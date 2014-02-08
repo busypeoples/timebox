@@ -1,0 +1,75 @@
+<h1>Tasks</h1>
+<div class="table-responsive">
+    <table class="table table-striped">
+        <thead>
+        <tr>
+
+            <th>Title</th>
+            <th>Date</th>
+            <th>Actions</th>
+
+        </tr>
+        </thead>
+        <tbody>
+
+            <tr data-ng-repeat="task in tasks">
+                <td>{{ task.title }}</td>
+                <td>{{ task.date | date:'dd.MM.yyyy'}}</td>
+                <td><button ng-show="!isToday(task.date)" ng-click="editTask(task)" class="btn btn-primary btn-sm">Edit</button></td>
+            </tr>
+
+        </tbody>
+    </table>
+</div>
+
+<hr />
+
+<h2>Upcoming Tasks</h2>
+<div class="table-responsive">
+    <table class="table table-striped">
+        <thead>
+        <tr>
+
+            <th>Title</th>
+            <th>Date</th>
+            <th>Actions</th>
+
+        </tr>
+        </thead>
+        <tbody>
+
+        <tr data-ng-repeat="task in futureTasks">
+            <td>{{ task.title }}</td>
+            <td>{{ task.date | date:'dd.MM.yyyy'}}</td>
+            <td><button ng-show="!isToday(task.date)" ng-click="editTask(task)" class="btn btn-primary btn-sm">Edit</button></td>
+        </tr>
+
+        </tbody>
+    </table>
+</div>
+
+<hr />
+
+<h2>Past Tasks</h2>
+<div class="table-responsive">
+    <table class="table table-striped">
+        <thead>
+        <tr>
+
+            <th>Title</th>
+            <th>Date</th>
+            <th>Actions</th>
+
+        </tr>
+        </thead>
+        <tbody>
+
+        <tr data-ng-repeat="task in pastTasks">
+            <td>{{ task.title }}</td>
+            <td>{{ task.date | date:'dd.MM.yyyy'}}</td>
+            <td><button ng-show="!isToday(task.date)" ng-click="editTask(task)" class="btn btn-primary btn-sm">Edit</button></td>
+        </tr>
+
+        </tbody>
+    </table>
+</div>
