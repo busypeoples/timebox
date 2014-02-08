@@ -13,6 +13,10 @@ Module.config(['$routeProvider', function($routeProvider){
 		.when('/tasks', {
 			templateUrl : 'view/tasks.html',
 			controller : 'TaskController'
+		})
+		.when('/settings', {
+			templateUrl : 'view/settings.html',
+			controller : 'SettingsController'
 		});
 		
 }]);

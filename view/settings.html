@@ -1,0 +1,29 @@
+<h2>Settings</h2>
+
+<div>
+
+    <div class="alert alert-danger" ng-show="settingsForm.$invalid">Please fix all errors.</div>
+
+    <form class="form-horizontal" name="settingsForm" novalidate>
+        <div class="form-group">
+            <label for="settings-name" class="col-sm-1 control-label">Name</label>
+
+            <div class="col-sm-11">
+                <input type="text" name="name" id="settings-name"  class="form-control" data-ng-model="settingsForm.name"/>
+                <p class="help-block">Simply your name...</p>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="settings-email" class="col-sm-1 control-label">E-Mail</label>
+
+            <div class="col-sm-11">
+                <input type="text" name="email" id="settings-email" class="form-control" data-ng-model="settingsForm.email"/>
+                <p class="help-block">Simply your e-mail address.</p>
+            </div>
+        </div>
+    </form>
+
+    <button class="btn btn-success" ng-click="saveSettings()">Save Settings</button>
+
+</div>
