@@ -18,9 +18,9 @@ describe('DashboardController', function() {
 
 	function getDate() {
 		var date = new Date();
-		date.setHours(0);
-		date.setMinutes(0);
-		date.setSeconds(0);
+		date.setHours(1);
+		date.setMinutes(1);
+		date.setSeconds(1);
 		return date;
 	}
 

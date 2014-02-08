@@ -28,7 +28,7 @@
 			var filteredTasks = [];
 
 			for ( var i=0; i < tasks.length; i++ ) {
-				if ( tasks[i].date < getToday() ) {
+				if ( isToday(tasks[i].date)) {
 					filteredTasks.push(tasks[i]);
 				}
 			}
@@ -36,11 +36,38 @@
 			return filteredTasks;
 		}
 
+		function scheduleTaskForToday(task) {
+			if (isToday(task.date)) return;
+			task.date = new Date();
+			Task.saveTask(task);
+		}
+
+		function isToday(date) {
+			if (date > getToday() && date < getTomorrow()) {
+				return true;
+			}
+			return false;
+		}
+
 		/**
 		 *
 		 * @returns {Date}
 		 */
 		function getToday() {
+			var today = new Date();
+			today.setHours(0);
+			today.setMinutes(0);
+			today.setSeconds(0);
+
+			return today;
+		}
+
+
+		/**
+		 *
+		 * @returns {Date}
+		 */
+		function getTomorrow() {
 			var today = new Date();
 			today.setDate(today.getDate() + 1);
 			today.setHours(0);
