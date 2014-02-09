@@ -1,6 +1,6 @@
 'use strict';
 
-describe('TaskController', function() {
+describe('TasksController', function() {
 
 	var scope, Task;
 
@@ -8,7 +8,7 @@ describe('TaskController', function() {
 
 	beforeEach(angular.mock.inject(function($rootScope, $controller) {
 		scope = $rootScope.$new();
-		$controller('TaskController', { $scope : scope });
+		$controller('TasksController', { $scope : scope });
 	}));
 
 	describe('sortTasksBy', function() {
@@ -98,24 +98,6 @@ describe('TaskController', function() {
 			expect(scope.getPastTasks(tasks).length).toBe(0);
 		});
 
-	});
-
-	describe('addTask', function() {
-		it('should add a task', function() {
-
-		});
-	});
-
-	describe('editTask', function() {
-		it('should edit a task', function() {
-
-		});
-	});
-
-	describe('deleteTask', function() {
-		it('should delete a task', function() {
-
-		});
 	});
 
 });
