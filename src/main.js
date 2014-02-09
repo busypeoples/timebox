@@ -16,6 +16,10 @@ Module.config(['$routeProvider', function($routeProvider){
 		})
 		.when('/tasks', {
 			templateUrl : '/timeboxApp/view/tasks.html',
+			controller : 'TasksController'
+		})
+		.when('/task/:id?', {
+			templateUrl : '/timeboxApp/view/task.html',
 			controller : 'TaskController'
 		})
 		.when('/settings', {
