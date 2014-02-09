@@ -20,6 +20,10 @@
 		tasks.push(new Task('Implement Task C', new Date('2014-04-11')));
 		tasks.push(new Task('Implement Task D', new Date('2014-06-21')));
 
+
+		// set the second task to active -- for testing purposes
+		tasks[1].active = true;
+
 		/**
 		 *
 		 * @returns {Array}
@@ -76,6 +80,17 @@
 
 			return null;
 		};
+
+		this.setActive = function(task) {
+			unsetAllActive();
+			task.active = true;
+		};
+
+		function unsetAllActive() {
+			for (var i=0; i<tasks.length; i++) {
+				tasks[i].active = false;
+			}
+		}
 	});
 
 }(angular);
