@@ -32,6 +32,8 @@
 		 *
 		 */
 		this.addTask = function(task) {
+			task.id = ++_id;
+			task.date = new Date(task.date);
 			tasks.push(task);
 		};
 
@@ -45,7 +47,35 @@
 					tasks[i] = task;
 				}
 			}
-		}
+		};
+
+		/**
+		 *
+		 * @param task
+		 */
+		this.removeTask = function(task) {
+			for (var i =0; i < tasks.length; i++) {
+				if (task.id === tasks[i].id) {
+					tasks.splice(i, 1);
+				}
+			}
+		};
+
+		/**
+		 *
+		 * @param id
+		 *
+		 * @returns {id|*|id|id|id|id}
+		 */
+		this.get = function(id) {
+			for (var i =0; i < tasks.length; i++) {
+				if (id == tasks[i].id) {
+					return tasks[i];
+				}
+			}
+
+			return null;
+		};
 	});
 
 }(angular);
