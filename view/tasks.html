@@ -13,8 +13,8 @@
         <thead>
         <tr>
 
-            <th>Title</th>
-            <th>Date</th>
+            <th width="70%">Title</th>
+            <th width="10%">Date</th>
             <th>Actions</th>
 
         </tr>
@@ -22,11 +22,19 @@
         <tbody>
 
             <tr data-ng-repeat="task in todayTasks">
-                <td>{{ task.title }}</td>
-                <td>{{ task.date | date:'dd.MM.yyyy'}}</td>
+                <td>{{ task.title }}<br/>
+                    <progressbar ng-show="task.active" animate="false" value="task.percentage" type="success"><b>{{ task.percentage }}%</b></progressbar>
+                </td>
+                <td>{{ task.date | date:'dd.MM.yyyy'}}<br/>
+                     <div ng-show="task.active">{{ task.formattedTime }}</div>
+                </td>
                 <td>
-                    <a href="#task?id={{ task.id }}"><button class="btn btn-primary btn-sm">Edit</button></a> &nbsp;
-                    <button ng-click="deleteTask(task)" class="btn btn-danger btn-sm">Delete</button>
+                    <button ng-show="task.active" ng-click="deActivateTask(task)" class="btn btn-success btn-sm">Stop</button>
+
+                    <!-- show when not active running task -->
+                    <a ng-hide="task.active" href="#task?id={{ task.id }}"><button class="btn btn-primary btn-sm">Edit</button></a> &nbsp;
+                    <button ng-hide="task.active" ng-click="deleteTask(task)" class="btn btn-danger btn-sm">Delete</button>
+                    <button ng-hide="task.active" ng-click="activateTask(task)" class="btn btn-success btn-sm">Start</button>
                 </td>
             </tr>
 
@@ -42,8 +50,8 @@
         <thead>
         <tr>
 
-            <th>Title</th>
-            <th>Date</th>
+            <th width="70%">Title</th>
+            <th width="10%">Date</th>
             <th>Actions</th>
 
         </tr>
@@ -68,8 +76,8 @@
         <thead>
         <tr>
 
-            <th>Title</th>
-            <th>Date</th>
+            <th width="70%">Title</th>
+            <th width="10%">Date</th>
             <th>Actions</th>
 
         </tr>

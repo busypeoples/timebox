@@ -1,14 +1,18 @@
 var Module = angular.module('timebox');
 
-Module.controller('TasksController', ['$scope', '$routeParams', 'Tasks', 'TaskService', '$location', function($scope, $routeParams, Tasks, TaskService, $location) {
+Module.controller('TasksController', ['$scope', '$routeParams', '$location','Tasks', 'TaskService', 'TimerService',
+	function($scope, $routeParams, $location, Tasks, TaskService, TimerService) {
 
 	$scope.sortTasksBy = sortTasksBy;
 	$scope.getTodaysTasks = getTodaysTasks;
 	$scope.getUpcomingTasks = getUpcomingTasks;
 	$scope.getPastTasks = getPastTasks;
 	$scope.deleteTask = deleteTask;
+	$scope.activateTask = activateTask;
+	$scope.deActivateTask = deActivateTask;
 
 	$scope.$watch(Tasks.getTasks(), init);
+	$scope.$watch(TimerService.getTime, updateTime);
 
 	/**
 	 * constructor
@@ -93,6 +97,33 @@ Module.controller('TasksController', ['$scope', '$routeParams', 'Tasks', 'TaskSe
 	function deleteTask(task) {
 		Tasks.removeTask(task);
 		init();
+	}
+
+	/**
+	 *
+	 * @param task
+	 */
+	function activateTask(task) {
+		if (task.active) return;
+		TimerService.stop();
+		Tasks.setActive(task);
+		TimerService.start(task.time || 0);
+		task.time = TimerService.getTime();
+		init();
+	}
+
+	function deActivateTask(task) {
+		TimerService.stop();
+		task.active = false;
+		init();
+	}
+
+	function updateTime() {
+		if (! Tasks.getActive()) return;
+		var task = Tasks.getActive();
+		task.time = TimerService.getTime();
+		task.formattedTime = TimerService.getFormattedTime();
+		task.percentage = TimerService.getPercentage();
 	}
 
 }]);
