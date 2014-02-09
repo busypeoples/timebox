@@ -3,7 +3,7 @@
 /**
  * simple user handling...
  */
-var Module = angular.module('timebox', ['ngResource', 'ngRoute']);
+var Module = angular.module('timebox', ['ngResource', 'ngRoute','ui.bootstrap']);
 Module.config(['$routeProvider', function($routeProvider){
 	$routeProvider
 		.when('/', {
@@ -26,8 +26,4 @@ Module.config(['$routeProvider', function($routeProvider){
 			templateUrl : '/timeboxApp/view/settings.html',
 			controller : 'SettingsController'
 		});
-		
-}]);
-
-Module.controller('MainController', ['$scope', function($scope) {
 }]);
