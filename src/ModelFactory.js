@@ -33,7 +33,6 @@
 		 */
 		this.addTask = function(task) {
 			task.id = ++_id;
-			task.date = new Date(task.date);
 			tasks.push(task);
 		};
 

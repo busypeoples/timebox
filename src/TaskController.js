@@ -10,7 +10,7 @@ Module.controller('TaskController', ['$scope', '$routeParams', 'Tasks', 'TaskSer
 	function init() {
 		if (! $routeParams.id) $location.path('/tasks');
 
-		$scope.addMode = ($routeParams.id == 'add')? true : false;
+		$scope.addMode = ($routeParams.id == 'add');
 		$scope.task= Tasks.get($routeParams.id);
 
 		initDatePicker();
@@ -36,6 +36,8 @@ Module.controller('TaskController', ['$scope', '$routeParams', 'Tasks', 'TaskSer
 	}
 
 	function saveTask(task) {
+		// workaround for now...
+		task.date.setMinutes(1);
 		if (task.id) {
 			Tasks.saveTask(task);
 		} else {
