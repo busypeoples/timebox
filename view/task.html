@@ -1,0 +1,37 @@
+<h1>Task {{ addMode? 'Create' : 'Edit' }}</h1>
+
+<hr />
+
+<div>
+
+    <div class="alert alert-danger" ng-show="taskForm.$invalid">Please fix all errors.</div>
+
+    <form class="form-horizontal" name="taskForm" novalidate>
+        <div class="form-group">
+            <label for="task-title" class="col-sm-1 control-label">Title</label>
+
+            <div class="col-sm-11">
+                <input type="text" name="name" id="task-title"  class="form-control" data-ng-model="task.title" ng-required="true"/>
+                <p class="help-block">Define a title for the task.</p>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="task-date" class="col-sm-1 control-label">Date</label>
+
+            <div class="col-sm-11">
+                <p class="input-group">
+                    <input type="text" class="form-control" id="task-date" datepicker-popup="dd.MM.yyyy" ng-model="task.date" is-open="opened" min="minDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" />
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </p>
+                <p class="help-block">Set a preferred date for the task. The actual date is set by default</p>
+            </div>
+        </div>
+    </form>
+
+    <button class="btn btn-success pull-left" ng-click="saveTask(task)">Save Settings</button>
+    <button class="btn btn-danger pull-right" ng-show="task.id" ng-click="deleteTask(task)">Delete Task</button>
+
+</div>
