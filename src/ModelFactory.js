@@ -12,13 +12,28 @@
 		};
 
 		// dummy tasks for now
-		tasks.push(new Task('Fix Bug A', new Date('2014-01-08')));
-		tasks.push(new Task('Fix Bug B'));
-		tasks.push(new Task('Implement Task A'));
-		tasks.push(new Task('Implement Task B'));
-		tasks.push(new Task('Rewrite Story A'));
-		tasks.push(new Task('Implement Task C', new Date('2014-04-11')));
-		tasks.push(new Task('Implement Task D', new Date('2014-06-21')));
+		load();
+
+		function save() {
+			if (!window.localStorage) return;
+			console.log('yes');
+			var storage = window.localStorage;
+			storage.setItem('tasks', JSON.stringify(tasks)); 
+		}
+		
+		function load() {
+			var storage = window.localStorage, storedTasks = null;
+			if (storedTasks = storage.getItem('tasks')) {
+				tasks = JSON.parse(storedTasks);	
+			}
+			
+			// quick fix for now...
+			for (var i=0; i < tasks.length; i++) {
+				tasks[i].date = new Date(tasks[i].date);
+			}
+		
+			console.log(tasks);
+		}
 
 		/**
 		 *
@@ -34,6 +49,7 @@
 		this.addTask = function(task) {
 			task.id = ++_id;
 			tasks.push(task);
+			save();
 		};
 
 		/**
@@ -42,10 +58,12 @@
 		 */
 		this.saveTask = function(task) {
 			for (var i =0; i < tasks.length; i++) {
-				if (task.id === tasks[i].id) {
+				if (task.id == tasks[i].id) {
 					tasks[i] = task;
 				}
 			}
+			
+			save();
 		};
 
 		/**
@@ -58,6 +76,7 @@
 					tasks.splice(i, 1);
 				}
 			}
+			save();
 		};
 
 		/**
@@ -79,6 +98,7 @@
 		this.setActive = function(task) {
 			unsetAllActive();
 			task.active = true;
+			save();
 		};
 
 		/**
