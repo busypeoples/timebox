@@ -32,10 +32,10 @@
                     <button ng-show="task.active" ng-click="deActivateTask(task)" class="btn btn-success btn-sm">Stop</button>
 
                     <!-- show when not active running task -->
+                    <button ng-hide="task.active" ng-click="activateTask(task)" class="btn btn-success btn-sm">Start</button> &nbsp;
                     <a ng-hide="task.active" href="#task?id={{ task.id }}"><button class="btn btn-primary btn-sm">Edit</button></a> &nbsp;
                     <button ng-hide="task.active" ng-click="deleteTask(task)" class="btn btn-danger btn-sm">Delete</button>
-                    <button ng-hide="task.active" ng-click="activateTask(task)" class="btn btn-success btn-sm">Start</button>
-                </td>
+            	</td>
             </tr>
 
         </tbody>
