@@ -13,7 +13,7 @@
 		 * @returns {boolean}
 		 */
 		this.isToday = function(date) {
-			if (date > getToday() && date < getTomorrow()) {
+			if (date >= getToday() && date < getTomorrow()) {
 				return true;
 			}
 			return false;
@@ -73,6 +73,24 @@
 			today.setSeconds(0);
 
 			return today;
+		}
+
+		/**
+		 *
+		 * @param id
+		 * @param tasks
+		 *
+		 * @returns {boolean}
+		 */
+		function isActive(id, tasks) {
+			tasks = tasks || [];
+			for (var i=0; i<tasks.length; i++) {
+				if (id == tasks[i].id) {
+					return true;
+				}
+			}
+
+			return false;
 		}
 
 	});
